@@ -2,6 +2,63 @@
 <html>
 <head>
     <title>Sign Up</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #ffe6f2;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+
+    .container {
+        background: white;
+        margin: 30px auto;
+        padding: 20px;
+        border-radius: 20px;
+        width: 90%;
+        max-width: 400px;
+        box-shadow: 0 0 10px rgba(255, 105, 180, 0.3);
+    }
+
+    h2 {
+        font-size: 1.4rem;  /* readable size on mobile */
+        color: #ff3385;
+    }
+
+    input, textarea, button {
+        width: 100%;
+        padding: 12px;
+        margin: 8px 0;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+        font-size: 1rem;
+    }
+
+    button {
+        background-color: #ff66b2;
+        color: white;
+        border: none;
+        font-size: 1.1rem;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #ff3385;
+    }
+
+    @media (max-width: 600px) {
+        body {
+            font-size: 16px; /* ensures legible text */
+        }
+        .container {
+            width: 95%;
+            padding: 15px;
+        }
+    }
+</style>
+
     <style>
         body { background-color: #ffe4ec; font-family: Arial; text-align: center; padding-top: 100px; }
         .box { background: white; display: inline-block; padding: 30px; border-radius: 15px; box-shadow: 0 0 10px pink; }

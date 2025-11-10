@@ -37,18 +37,34 @@ TIPS = [
     "Reduce caffeine to minimize bloating ☕",
 ]
 
+from django.contrib.auth import authenticate, login
+from django.shortcuts import render, redirect
 
 def login_view(request):
     if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
+        username = request.POST['username']
+        password = request.POST['password']
         user = authenticate(request, username=username, password=password)
         if user:
             login(request, user)
-            return redirect('home')
+            return redirect('home')  # takes them back to their page
         else:
             return render(request, 'tracker/login.html', {'error': 'Invalid credentials'})
     return render(request, 'tracker/login.html')
+
+@login_required
+def home(request):
+    periods = Period.objects.filter(user=request.user).order_by('-start_date')
+    return render(request, 'home.html', {'periods': periods})
+
+@login_required
+def add_period(request):
+    if request.method == 'POST':
+        start_date = request.POST['start_date']
+        end_date = request.POST['end_date']
+        Period.objects.create(user=request.user, start_date=start_date, end_date=end_date)
+        return redirect('home')
+    return render(request, 'add_period.html')
 
 def logout_view(request):
     logout(request)
