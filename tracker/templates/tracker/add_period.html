@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Add Period</title>
+<style>
+body{background:linear-gradient(135deg,#ffe6f2,#ffd6e8);font-family:Poppins;text-align:center;padding:40px;}
+.card{background:#fff;border-radius:20px;width:80%;max-width:400px;margin:auto;padding:30px;box-shadow:0 0 15px rgba(255,0,102,0.3);}
+input,button{padding:10px;width:90%;margin:10px 0;border-radius:10px;border:1px solid #ff6699;}
+button{background:#ff3385;color:white;border:none;cursor:pointer;}
+button:hover{background:#ff1a66;}
+</style>
+</head>
+<body>
+<div class="card">
+<h2>🩷 Add Period Details 🩷</h2>
+<form method="POST">
+{% csrf_token %}
+<label>Start Date:</label><br>
+<input type="date" name="start_date" required><br>
+
+<label>End Date:</label><br>
+<input type="date" name="end_date" required><br>
+
+<label>Mood:</label><br>
+<input type="text" name="mood" placeholder="Happy, tired, etc."><br>
+
+<label>Symptoms:</label><br>
+<input type="text" name="symptoms" placeholder="Cramps, bloating, etc."><br>
+
+<button type="submit">Save</button>
+</form>
+</div>
+</body>
+</html>
+<form method="POST">
+    {% csrf_token %}
+    <label>Start Date:</label><br>
+    <input type="date" name="start_date" required><br><br>
+
+    <label>End Date:</label><br>
+    <input type="date" name="end_date" required><br><br>
+
+    <label>Mood:</label><br>
+    <input type="text" name="mood" placeholder="How do you feel?"><br><br>
+
+    <label>Symptoms:</label><br>
+    <textarea name="symptoms" placeholder="Cramps, bloating, etc."></textarea><br><br>
+
+    <button type="submit">Save Period</button>
+</form>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>My Period Tracker</title>
+<style>
+body{background:linear-gradient(135deg,#fff0f5,#ffd6e8);font-family:Poppins;text-align:center;padding:30px;}
+.card{background:#fff;border-radius:20px;max-width:600px;margin:auto;padding:20px;box-shadow:0 0 15px rgba(255,105,180,0.3);}
+table{width:100%;border-collapse:collapse;margin-top:15px;}
+th,td{padding:8px;border-bottom:1px solid #ffe6f2;}
+button,a{background:#ff3385;color:white;text-decoration:none;padding:10px 20px;border-radius:10px;margin:5px;display:inline-block;}
+.tip{background:#ffe6f2;padding:10px;border-radius:10px;margin:20px 0;color:#ff3385;font-weight:600;}
+</style>
+</head>
+<body>
+<div class="card">
+<h2>🩸 Welcome, {{ user.username }} 🩸</h2>
+<a href="/add/">Add Period Entry</a>
+<a href="/logout/">Logout</a>
+
+<div class="tip">💡 Tip of the Day: {{ tip }}</div>
+
+<h3>📅 Your Period History</h3>
+<table>
+<tr><th>Start</th><th>End</th><th>Next</th><th>Mood</th><th>Symptoms</th></tr>
+{% for p in periods %}
+<tr>
+<td>{{ p.start_date }}</td>
+<td>{{ p.end_date }}</td>
+<td>{{ p.next_period }}</td>
+<td>{{ p.mood }}</td>
+<td>{{ p.symptoms }}</td>
+</tr>
+{% empty %}
+<tr><td colspan="5">No records yet. Add one!</td></tr>
+{% endfor %}
+</table>
+</div>
+</body>
+</html>

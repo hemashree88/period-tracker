@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Up</title>
+    <style>
+        body { background-color: #ffe4ec; font-family: Arial; text-align: center; padding-top: 100px; }
+        .box { background: white; display: inline-block; padding: 30px; border-radius: 15px; box-shadow: 0 0 10px pink; }
+        input { margin: 8px; padding: 10px; width: 80%; border: 1px solid #ccc; border-radius: 10px; }
+        button { background-color: #ff6699; color: white; border: none; padding: 10px 20px; border-radius: 10px; cursor: pointer; }
+        button:hover { background-color: #ff3366; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>Create Your Account 💕</h2>
+        {% if error %}<p class="error">{{ error }}</p>{% endif %}
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Enter Username" required><br>
+            <input type="password" name="password" placeholder="Enter Password" required><br>
+            <button type="submit">Sign Up</button>
+        </form>
+        <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
+    </div>
+</body>
+</html>
